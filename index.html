@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Attendance Management System</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>Student Attendance Manager</h1>
+        <p>Manage students and track attendance easily.</p>
+      </div>
+      <button id="resetBtn" class="secondary" type="button">
+        Reset Demo Data
+      </button>
+    </header>
+
+    <section class="dashboard">
+      <div class="stat-card">
+        <span>Total Students</span>
+        <h2 id="totalCount">0</h2>
+      </div>
+      <div class="stat-card present-card">
+        <span>Present Today</span>
+        <h2 id="presentCount">0</h2>
+      </div>
+      <div class="stat-card absent-card">
+        <span>Absent Today</span>
+        <h2 id="absentCount">0</h2>
+      </div>
+      <div class="stat-card">
+        <span>Average Attendance</span>
+        <h2 id="averageCount">0%</h2>
+      </div>
+    </section>
+
+    <main class="main-grid">
+      <section class="panel">
+        <h2>Add Student</h2>
+        <p class="muted">Enter student details below.</p>
+
+        <div id="message" class="message" role="status"
+             aria-live="polite"></div>
+
+        <form id="studentForm">
+          <label for="studentName">Student Name</label>
+          <input id="studentName" type="text"
+                 placeholder="Enter student name" maxlength="70">
+
+          <label for="rollNumber">Roll Number</label>
+          <input id="rollNumber" type="text"
+                 placeholder="Enter roll number" maxlength="30">
+
+          <label for="attendance">Today's Attendance</label>
+          <select id="attendance">
+            <option value="Present">Present</option>
+            <option value="Absent">Absent</option>
+          </select>
+
+          <button type="submit" class="primary">+ Add Student</button>
+          <button type="button" id="clearBtn"
+                  class="secondary full-width">Clear Form</button>
+        </form>
+      </section>
+
+      <section class="panel records-panel">
+        <div class="records-header">
+          <div>
+            <h2>Student Records</h2>
+            <p class="muted">Search and manage student attendance.</p>
+          </div>
+          <button id="exportBtn" class="secondary" type="button">
+            Export CSV
+          </button>
+        </div>
+
+        <div class="filters">
+          <input id="searchInput" type="search"
+                 placeholder="Search name or roll number"
+                 aria-label="Search students">
+
+          <select id="statusFilter" aria-label="Filter attendance">
+            <option value="All">All Statuses</option>
+            <option value="Present">Present</option>
+            <option value="Absent">Absent</option>
+          </select>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Student</th>
+                <th>Today's Status</th>
+                <th>Attendance</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="studentTable"></tbody>
+          </table>
+          <p id="emptyState" class="empty" hidden>No students found.</p>
+        </div>
+
+        <p id="recordSummary" class="muted"></p>
+      </section>
+    </main>
+
+    <footer>
+      Student Attendance Management System | HTML, CSS &amp; JavaScript
+    </footer>
+  </div>
+</body>
+</html>
